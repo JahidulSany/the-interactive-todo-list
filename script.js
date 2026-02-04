@@ -11,8 +11,9 @@ const allTasksDiv = document.getElementById('allTasks');
 // EventListeners
 addTaskButton.addEventListener('click', handleAddTask);
 
-function handleAddTask(e) {
-  e.preventDefault();
+function handleAddTask(event) {
+  event.preventDefault();
+
   let taskValue = inputEl.value.trim();
 
   if (!taskValue) return;
@@ -29,12 +30,12 @@ function handleAddTask(e) {
 
   // Create new DOM Elements
   const taskContent = `
-        <input class="form-check-input mt-0 checkbox-task" type="checkbox" aria-label="Checkbox for following text input">
+        <input onclick="handleCheckTaskBox(event)" class="form-check-input mt-0 checkbox-task" type="checkbox">
         <p class="m-0 mx-2 task-text">${taskValue}</p>
-        <button type="button" class="btn btn-success delete-task">
+        <button onclick="handleDeleteTask(event)" type="button" class="btn btn-danger delete-task">
             Delete Task
         </button>
-        <button type="button" class="btn btn-success edit-task">
+        <button onclick="handleEditTask(event)" type="button" class="btn btn-info edit-task">
             Edit Task
         </button>
 `;
@@ -43,41 +44,24 @@ function handleAddTask(e) {
 
   allTasksDiv.appendChild(taskContainer);
 
-  // Check Task Button
-  const checkTaskButton = document.querySelector('.checkbox-task');
-
-  // Delete Task Button
-  const deleteTaskButton = document.querySelector('.delete-task');
-
-  // Edit Task Button
-  const editTaskButton = document.querySelector('.edit-task');
-
-  checkTaskButton.addEventListener('click', handleCheckTaskBox);
-
-  deleteTaskButton.addEventListener('click', handleDeleteTask);
-
-  editTaskButton.addEventListener('click', handleEditTask);
-
-  taskValue = '';
+  inputEl.value = '';
 }
 
-function handleCheckTaskBox(e) {
-  const taskText = document.querySelector('.task-text');
-  console.log(taskText);
-  if (e.target.checked) {
-    taskText.classList.add('text-decoration-line-through');
-  } else {
-    taskText.classList.replace(
-      'text-decoration-line-through',
-      'text-decoration-none',
-    );
-  }
+// implementing Checkbox Functionality
+function handleCheckTaskBox(event) {
+  const taskContainer = event.target.parentElement;
+  const taskText = taskContainer.querySelector('.task-text');
+  event.target.checked
+    ? taskText.classList.add('text-decoration-line-through')
+    : taskText.classList.remove('text-decoration-line-through');
+}
 
-  function handleDeleteTask(e) {
-    console.log(e.target.value);
-  }
+// Implementing Delete Task Functionalty
+function handleDeleteTask(event) {
+  allTasksDiv.removeChild(event.target.parentElement);
+}
 
-  function handleEditTask(e) {
-    console.log(e.target.value);
-  }
+// Implementing Edit Task Functionalty
+function handleEditTask(event) {
+  console.log(event.target);
 }
