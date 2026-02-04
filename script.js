@@ -63,5 +63,17 @@ function handleDeleteTask(event) {
 
 // Implementing Edit Task Functionalty
 function handleEditTask(event) {
-  console.log(event.target);
+  const taskContainer = event.target.parentElement;
+//   console.log(taskContainer);
+
+  currentTaskText = taskContainer.querySelector('.task-text');
+
+//   console.log(currentTaskText.textContent);
+
+  const updatedTaskText = prompt('Edit Task:', currentTaskText.innerText);
+
+  // Checking if it is truthy, not null/empty
+  if (updatedTaskText) {
+    currentTaskText.innerText = updatedTaskText;
+  }
 }
