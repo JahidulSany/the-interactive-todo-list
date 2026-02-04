@@ -31,6 +31,18 @@ h5,
 h6 {
   margin-bottom: 1.3rem;
 }
+ 
+.task-container {
+  padding: 30px 0;
+  border: 2px solid #10c3c9;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.task-container p {
+  font-weight: 500;
+  padding: 5px 10px;
+}
 
 /* ------------------------------------
 ----------- Responsive Design ---------
