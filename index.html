@@ -21,8 +21,47 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>The Interactive Todo List</h1>
-    
+    <header
+      class="container-fluid text-center border-2 border-info bg-light-subtle py-4"
+    >
+      <h1>The Interactive Todo List</h1>
+    </header>
+    <main>
+      <section class="container py-5">
+        <div class="text-center">
+          <p class="text-center">
+            You can add a task by typing into an input field and clicking a
+            button. <br />The new task is immediately displayed in the task
+            list.
+            <br />
+            Tasks will be validated before being added (e.g., non-empty and
+            unique).<br />
+            You can delete tasks from the list, and the task should be removed
+            from the DOM.<br />
+            Moreover, you can click an "Edit" button for a task, modify the
+            text, and save the changes.
+          </p>
+        </div>
+        <form>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" />
+            <label for="floatingInput">Add Your Task...</label>
+          </div>
+          <button id="addTask" type="submit" class="btn btn-success">
+            Add Task
+          </button>
+        </form>
+      </section>
+
+      <section class="container text-center">
+        <div id="tasks" class="main-content"></div>
+      </section>
+    </main>
+    <footer class="py-5 bg-dark text-center">
+      <p class="text-light">
+        <small>Copyright &copy; 2026 All Rights Reserved</small>
+      </p>
+    </footer>
 
     <!-- HTML Ends Here -->
 

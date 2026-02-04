@@ -1,0 +1,93 @@
+/* Custom CSS Styles */
+:root {
+  --primary-color: #10c3c9;
+  --secondary-color: orange;
+  --text-color: #141414;
+  --primary-font: Verdana, Geneva, Tahoma, sans-serif;
+  --secondary-font: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  background-color: aqua;
+  font-family: var(--secondary-font);
+  color: var(--text-color);
+}
+
+p {
+  color: var(--text-color);
+  margin-bottom: 1.3rem;
+  font-family: var(--primary-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1.3rem;
+}
+
+/* ------------------------------------
+----------- Responsive Design ---------
+--------------------------------------*/
+
+@media screen and (min-width: 576px) and (max-width: 767.98px) {
+  html {
+    font-size: 16px;
+  }
+
+  p {
+    margin-bottom: 1.4rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.98px) {
+  html {
+    font-size: 18px;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  html {
+    font-size: 20px;
+  }
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 1.5rem;
+  }
+}
