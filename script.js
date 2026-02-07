@@ -11,12 +11,56 @@ const allTasksDiv = document.getElementById('allTasks');
 // EventListeners
 addTaskButton.addEventListener('click', handleAddTask);
 
+function showWarning(msg) {
+  inputEl.style.border = '2px solid red';
+
+  if (!document.querySelector('h5')) {
+    let warningMsg = document.createElement('h5');
+    warningMsg.style.color = 'red';
+    warningMsg.style.fontWeight = 'bold';
+    warningMsg.style.paddingTop = '15px';
+    warningMsg.innerHTML = msg;
+    inputEl.insertAdjacentElement('afterend', warningMsg);
+  }
+  return;
+}
+
+// Checking Duplicate Values
+function duplicateTaskValues(taskValue) {
+  const allTasksText = document.querySelectorAll('.task-text');
+  for (let task of allTasksText) {
+    if (task.textContent.toLowerCase() === taskValue.toLowerCase()) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Clear all warning messages
+function clearWarning() {
+  const previousWarningMsgState = document.querySelector('h5');
+  if (previousWarningMsgState) previousWarningMsgState.remove();
+}
+
 function handleAddTask(event) {
   event.preventDefault();
 
   let taskValue = inputEl.value.trim();
 
-  if (!taskValue) return;
+  // Empty Input Check
+  if (!taskValue) {
+    showWarning('Empty value is not accepted!');
+    return;
+  }
+
+  // Duplicate Check
+  if (duplicateTaskValues(taskValue)) {
+    showWarning('Task already exists!');
+    return;
+  }
+
+  clearWarning();
+  inputEl.style.border = '';
 
   // Create the Show tasks container
   const taskContainer = document.createElement('div');
@@ -64,11 +108,11 @@ function handleDeleteTask(event) {
 // Implementing Edit Task Functionalty
 function handleEditTask(event) {
   const taskContainer = event.target.parentElement;
-//   console.log(taskContainer);
+  //   console.log(taskContainer);
 
   currentTaskText = taskContainer.querySelector('.task-text');
 
-//   console.log(currentTaskText.textContent);
+  //   console.log(currentTaskText.innerText);
 
   const updatedTaskText = prompt('Edit Task:', currentTaskText.innerText);
 
